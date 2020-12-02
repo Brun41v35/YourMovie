@@ -8,12 +8,18 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
-
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        REST.loadMovie { (theMovie) in
+            print(theMovie.originalTitle)
+            print(theMovie.popularity)
+        } onError: { (movieError) in
+            print(movieError)
+        }
+    }
 }
 

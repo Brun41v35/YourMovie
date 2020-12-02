@@ -15,6 +15,8 @@
 		7E0CA2A62577274E00CD079A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E0CA2A42577274E00CD079A /* LaunchScreen.storyboard */; };
 		7E0CA2B12577274E00CD079A /* YourMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0CA2B02577274E00CD079A /* YourMovieTests.swift */; };
 		7E0CA2BC2577274E00CD079A /* YourMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0CA2BB2577274E00CD079A /* YourMovieUITests.swift */; };
+		7E9D378A2577C0AD00B5F735 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D37892577C0AD00B5F735 /* Movie.swift */; };
+		7E9D37902577C24A00B5F735 /* REST.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E9D378F2577C24A00B5F735 /* REST.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		7E0CA2B72577274E00CD079A /* YourMovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourMovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E0CA2BB2577274E00CD079A /* YourMovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourMovieUITests.swift; sourceTree = "<group>"; };
 		7E0CA2BD2577274E00CD079A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7E9D37892577C0AD00B5F735 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		7E9D378F2577C24A00B5F735 /* REST.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REST.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 		7E0CA2982577274900CD079A /* YourMovie */ = {
 			isa = PBXGroup;
 			children = (
+				7E9D378E2577C23400B5F735 /* Network */,
 				7E0CA2D0257727A300CD079A /* Model */,
 				7E0CA2D1257727A800CD079A /* View */,
 				7E0CA2D2257727AE00CD079A /* ViewModel */,
@@ -139,6 +144,7 @@
 		7E0CA2D0257727A300CD079A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7E9D37892577C0AD00B5F735 /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -158,6 +164,14 @@
 			children = (
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		7E9D378E2577C23400B5F735 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				7E9D378F2577C24A00B5F735 /* REST.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +306,8 @@
 			files = (
 				7E0CA29E2577274900CD079A /* ViewController.swift in Sources */,
 				7E0CA29A2577274900CD079A /* AppDelegate.swift in Sources */,
+				7E9D378A2577C0AD00B5F735 /* Movie.swift in Sources */,
+				7E9D37902577C24A00B5F735 /* REST.swift in Sources */,
 				7E0CA29C2577274900CD079A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
