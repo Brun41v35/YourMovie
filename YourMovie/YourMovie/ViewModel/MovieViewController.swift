@@ -5,7 +5,10 @@
 //  Created by Bruno Silva on 01/12/20.
 //
 
+//https://image.tmdb.org/t/p/w300/or06FN3Dka5tukK1e9sl16pB3iy.jpg
+
 import UIKit
+import Kingfisher
 
 class MovieViewController: UIViewController {
     
@@ -41,6 +44,11 @@ class MovieViewController: UIViewController {
                 movieName.text = theMovie.originalTitle
                 likesMovie.text = String(theMovie.voteCount)
                 viewsMovie.text = String(theMovie.popularity)
+                if let urlImage = URL(string: "https://image.tmdb.org/t/p/w300/or06FN3Dka5tukK1e9sl16pB3iy.jpg") {
+                    self.imageMovie.kf.setImage(with: urlImage)
+                } else {
+                    
+                }
             }
         } onError: { (movieError) in
             print(movieError)
