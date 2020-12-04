@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -105,7 +105,6 @@
 				C5FDEDE1A8E67CFEEA8BCA38 /* Pods-YourMovieTests.debug.xcconfig */,
 				87380FDD5DDD312FABB3D0C9 /* Pods-YourMovieTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -134,10 +133,11 @@
 		7E0CA2982577274900CD079A /* YourMovie */ = {
 			isa = PBXGroup;
 			children = (
-				7E9D378E2577C23400B5F735 /* Network */,
+				7E9D378E2577C23400B5F735 /* Networking */,
 				7E0CA2D0257727A300CD079A /* Model */,
 				7E0CA2D1257727A800CD079A /* View */,
 				7E0CA2D2257727AE00CD079A /* ViewModel */,
+				7E0CA29D2577274900CD079A /* MovieViewController.swift */,
 				7E0CA2CF2577278A00CD079A /* Supports */,
 				7E0CA2A72577274E00CD079A /* Info.plist */,
 			);
@@ -192,17 +192,16 @@
 		7E0CA2D2257727AE00CD079A /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				7E0CA29D2577274900CD079A /* MovieViewController.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		7E9D378E2577C23400B5F735 /* Network */ = {
+		7E9D378E2577C23400B5F735 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				7E9D378F2577C24A00B5F735 /* REST.swift */,
 			);
-			path = Network;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		F09430651B16AC61ED8048AD /* Frameworks */ = {

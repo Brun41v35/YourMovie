@@ -10,6 +10,9 @@ import Kingfisher
 
 class MovieViewController: UIViewController {
     
+    //MARK: - Variaveis
+    
+    
     //MARK: - IBOutlets
     @IBOutlet weak var imageMovie: UIImageView!
     @IBOutlet weak var nameMovie: UILabel!
@@ -32,6 +35,7 @@ class MovieViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         REST.loadMovie { (theMovie) in
             DispatchQueue.main.async {
                 
@@ -39,7 +43,7 @@ class MovieViewController: UIViewController {
                 guard let likesMovie = self.labelLikes else { return }
                 guard let viewsMovie = self.labelViews else { return }
                 
-                movieName.text = theMovie.originalTitle
+                movieName.text = theMovie.title
                 likesMovie.text = String(theMovie.voteCount)
                 viewsMovie.text = String(theMovie.popularity)
                 if let urlImage = URL(string: "https://image.tmdb.org/t/p/w300\(theMovie.posterPath)") {
