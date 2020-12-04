@@ -9,7 +9,7 @@ import Foundation
 
 enum MovieError {
     case url
-    case taskError(error: Error)
+    case taskError
     case noResponse
     case noData
     case responseStatusCode(code: Int)
@@ -42,27 +42,28 @@ class REST {
             
             if error == nil {
                 
-                guard let response = response as? HTTPURLResponse else {
+                guard let responseURL = response as? HTTPURLResponse else {
                     onError(.noResponse)
                     return
                 }
                 
-                if response.statusCode == 200 {
+                if responseURL.statusCode == 200 {
                     
-                    guard let data = data else { return }
+                    guard let receivingData = data else { return }
                     
                     do {
-                        let movie = try JSONDecoder().decode(Movie.self, from: data)
+                        let decoder = JSONDecoder()
+                        let movie = try decoder.decode(Movie.self, from: receivingData)
                         onComplete(movie)
                     } catch {
                         onError(.invalidJSON)
                     }
                     
                 } else {
-                    onError(.responseStatusCode(code: response.statusCode))
+                    onError(.responseStatusCode(code: responseURL.statusCode))
                 }
             } else {
-                onError(.taskError(error: error!))
+                onError(.taskError)
             }
         }
         dataTask.resume()
