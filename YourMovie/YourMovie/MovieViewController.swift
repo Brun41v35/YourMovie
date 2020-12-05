@@ -11,13 +11,14 @@ import Kingfisher
 class MovieViewController: UIViewController {
     
     //MARK: - Variaveis
-    
+    var similarMovies: [Results] = []
     
     //MARK: - IBOutlets
     @IBOutlet weak var imageMovie: UIImageView!
     @IBOutlet weak var nameMovie: UILabel!
     @IBOutlet weak var labelViews: UILabel!
     @IBOutlet weak var labelLikes: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     
     //MARK: - IBAction
     @IBAction func actionLike(_ sender: UIButton) {
@@ -35,6 +36,17 @@ class MovieViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        REST.loadSimilarMovie { (movies) in
+            DispatchQueue.main.async {
+                var listSimilarMovies = movies.results
+                self.similarMovies = listSimilarMovies
+                self.tableView.dataSource = self
+                self.tableView.reloadData()
+            }
+        } onError: { (someError) in
+            print(someError)
+        }
         
         REST.loadMovie { (theMovie) in
             DispatchQueue.main.async {
@@ -55,6 +67,23 @@ class MovieViewController: UIViewController {
         } onError: { (movieError) in
             print(movieError)
         }
+    }
+}
+
+// MARK: - TableView
+extension MovieViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return similarMovies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieTableViewCell
+        
+        let movie = similarMovies[indexPath.row]
+        cell.prepareCell(with: movie)
+        
+        return cell
     }
 }
 
