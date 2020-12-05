@@ -77,13 +77,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zgT-0R-2Z9">
-                                                    <rect key="frame" x="20" y="11" width="73" height="106"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="106" id="hNa-o9-7Py"/>
-                                                        <constraint firstAttribute="width" constant="73" id="lHg-Ny-m4s"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome Filme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Vf-fk-PfB">
                                                     <rect key="frame" x="101" y="11" width="251" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -99,11 +92,18 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zgT-0R-2Z9">
+                                                    <rect key="frame" x="11" y="11" width="82" height="110"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="110" id="R7L-Nh-A00"/>
+                                                        <constraint firstAttribute="width" constant="82" id="wEK-QK-Bb7"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="zgT-0R-2Z9" firstAttribute="top" secondItem="KVr-3T-Bw3" secondAttribute="top" constant="11" id="8tZ-6N-EnW"/>
-                                                <constraint firstItem="zgT-0R-2Z9" firstAttribute="leading" secondItem="KVr-3T-Bw3" secondAttribute="leading" constant="20" symbolic="YES" id="HKw-fx-yjT"/>
-                                                <constraint firstAttribute="bottom" secondItem="zgT-0R-2Z9" secondAttribute="bottom" constant="11" id="U8g-ZL-bXo"/>
+                                                <constraint firstAttribute="bottom" secondItem="zgT-0R-2Z9" secondAttribute="bottom" constant="7" id="1SN-ew-7in"/>
+                                                <constraint firstItem="zgT-0R-2Z9" firstAttribute="leading" secondItem="KVr-3T-Bw3" secondAttribute="leading" constant="11" id="3d7-gd-cmw"/>
+                                                <constraint firstItem="zgT-0R-2Z9" firstAttribute="top" secondItem="KVr-3T-Bw3" secondAttribute="top" constant="11" id="hmV-rW-Va4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -129,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-506" y="11"/>
+            <point key="canvasLocation" x="-811.59420289855075" y="-6.6964285714285712"/>
         </scene>
     </scenes>
     <resources>
