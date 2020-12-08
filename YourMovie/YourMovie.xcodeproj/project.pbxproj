@@ -139,8 +139,8 @@
 				7E0CA2D0257727A300CD079A /* Model */,
 				7E0CA2D1257727A800CD079A /* View */,
 				7E0CA2D2257727AE00CD079A /* ViewModel */,
-				7E0CA29D2577274900CD079A /* MovieViewController.swift */,
 				7E0CA2CF2577278A00CD079A /* Supports */,
+				7E0CA29D2577274900CD079A /* MovieViewController.swift */,
 				7E0CA2A72577274E00CD079A /* Info.plist */,
 			);
 			path = YourMovie;

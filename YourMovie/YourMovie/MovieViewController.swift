@@ -8,9 +8,9 @@
 import UIKit
 import Kingfisher
 
-class MovieViewController: UIViewController {
+class MovieViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    //MARK: - Variaveis
+    //MARK: - Variables
     var similarMovies: [Results] = []
     
     //MARK: - IBOutlets
@@ -33,6 +33,8 @@ class MovieViewController: UIViewController {
     //MARK: - View life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +43,6 @@ class MovieViewController: UIViewController {
             DispatchQueue.main.async {
                 var listSimilarMovies = movies.results
                 self.similarMovies = listSimilarMovies
-                self.tableView.dataSource = self
                 self.tableView.reloadData()
             }
         } onError: { (someError) in
@@ -58,6 +59,7 @@ class MovieViewController: UIViewController {
                 movieName.text = theMovie.title
                 likesMovie.text = String(theMovie.voteCount)
                 viewsMovie.text = String(theMovie.popularity)
+                
                 if let urlImage = URL(string: "https://image.tmdb.org/t/p/w300\(theMovie.posterPath)") {
                     self.imageMovie.kf.setImage(with: urlImage)
                 } else {
@@ -68,11 +70,8 @@ class MovieViewController: UIViewController {
             print(movieError)
         }
     }
-}
-
-// MARK: - TableView
-extension MovieViewController: UITableViewDataSource {
     
+    //MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return similarMovies.count
     }
@@ -84,6 +83,10 @@ extension MovieViewController: UITableViewDataSource {
         cell.prepareCell(with: movie)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UIDevice.current.userInterfaceIdiom == UIUserInterfaceIdiom.phone ? 100 : 260
     }
 }
 

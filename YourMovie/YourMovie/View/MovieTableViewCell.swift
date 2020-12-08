@@ -28,6 +28,7 @@ class MovieTableViewCell: UITableViewCell {
     //MARK: - Funcoes
     func prepareCell(with movie: Results) {
         labelName.text = movie.title
+        labelDateMovie.text = movie.releaseDate
         if let url = URL(string: "https://image.tmdb.org/t/p/w300\(movie.posterPath)") {
             imageMovie.kf.indicatorType = .activity
             imageMovie.kf.setImage(with: url)
