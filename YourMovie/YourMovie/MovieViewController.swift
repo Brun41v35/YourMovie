@@ -12,6 +12,7 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     //MARK: - Variables
     var similarMovies: [Results] = []
+    var viewModel = ViewModel()
     
     //MARK: - IBOutlets
     @IBOutlet weak var imageMovie: UIImageView!
@@ -38,16 +39,7 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
-        REST.loadSimilarMovie { (movies) in
-            DispatchQueue.main.async {
-                var listSimilarMovies = movies.results
-                self.similarMovies = listSimilarMovies
-                self.tableView.reloadData()
-            }
-        } onError: { (someError) in
-            print(someError)
-        }
+        loadListMovies()
         
         REST.loadMovie { (theMovie) in
             DispatchQueue.main.async {
@@ -71,15 +63,23 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
+    func loadListMovies() {
+        viewModel.carregaFilmesNoVetor {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     //MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return similarMovies.count
+        return viewModel.numberOfRowsInSection(section: section)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieTableViewCell
         
-        let movie = similarMovies[indexPath.row]
+        let movie = viewModel.cellForRowAt(indexPath: indexPath)
         cell.prepareCell(with: movie)
         
         return cell

@@ -15,16 +15,6 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelDateMovie: UILabel!
     
-    //MARK: - Method awakeFromNib
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-
-    //MARK: - SetSelected
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
     //MARK: - Funcoes
     func prepareCell(with movie: Results) {
         labelName.text = movie.title
