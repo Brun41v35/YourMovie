@@ -11,7 +11,6 @@ import Kingfisher
 class MovieViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     //MARK: - Variables
-    var similarMovies: [Results] = []
     var viewModel = ViewModel()
     
     //MARK: - IBOutlets
@@ -36,37 +35,38 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
         super.viewDidLoad()
         self.tableView.dataSource = self
         self.tableView.delegate = self
+        loadListMovies()
+        loadMovieSelected()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        loadListMovies()
-        
-        REST.loadMovie { (theMovie) in
+    //MARK: - Functions
+    func loadListMovies() {
+        viewModel.loadingMoviesAtList {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    func loadMovieSelected(){
+        viewModel.loagingMovieSelected { (movieSelected) in
+            
+            guard let movieName = self.nameMovie else { return }
+            guard let likesMovie = self.labelLikes else { return }
+            guard let viewsMovie = self.labelViews else { return }
+            
             DispatchQueue.main.async {
                 
-                guard let movieName = self.nameMovie else { return }
-                guard let likesMovie = self.labelLikes else { return }
-                guard let viewsMovie = self.labelViews else { return }
+                movieName.text = movieSelected.title
+                likesMovie.text = String(movieSelected.voteCount)
+                viewsMovie.text = String(movieSelected.popularity)
                 
-                movieName.text = theMovie.title
-                likesMovie.text = String(theMovie.voteCount)
-                viewsMovie.text = String(theMovie.popularity)
-                
-                if let urlImage = URL(string: "https://image.tmdb.org/t/p/w300\(theMovie.posterPath)") {
+                if let urlImage = URL(string: "https://image.tmdb.org/t/p/w300\(movieSelected.posterPath)") {
                     self.imageMovie.kf.setImage(with: urlImage)
                 } else {
                     self.imageMovie.image = nil
                 }
-            }
-        } onError: { (movieError) in
-            print(movieError)
-        }
-    }
-    
-    func loadListMovies() {
-        viewModel.carregaFilmesNoVetor {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+                
             }
         }
     }

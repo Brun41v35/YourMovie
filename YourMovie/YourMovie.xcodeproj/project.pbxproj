@@ -144,7 +144,6 @@
 				7E0CA2D1257727A800CD079A /* View */,
 				7E6B6AA42584175000C9145B /* ViewModel */,
 				7E0CA2CF2577278A00CD079A /* Supports */,
-				7E0CA29D2577274900CD079A /* MovieViewController.swift */,
 				7E0CA2A72577274E00CD079A /* Info.plist */,
 			);
 			path = YourMovie;
@@ -190,6 +189,7 @@
 		7E0CA2D1257727A800CD079A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7E0CA29D2577274900CD079A /* MovieViewController.swift */,
 				7E67BF3F257BE8E800E2285C /* MovieTableViewCell.swift */,
 				7E0CA29F2577274900CD079A /* Main.storyboard */,
 				7E0CA2A42577274E00CD079A /* LaunchScreen.storyboard */,

@@ -11,13 +11,22 @@ class ViewModel {
     
     //MARK: - Variables
     private var popularMovies = [Results]()
+    private var nameMovie: String?
     
-    //MARK: - Methods
-    func carregaFilmesNoVetor(onComplete: @escaping () -> Void) {
+    //MARK: - Functions
+    func loadingMoviesAtList(onComplete: @escaping () -> Void) {
         REST.loadSimilarMovie { (listMovies) in
             var listSimilarMovies = listMovies.results
             self.popularMovies = listSimilarMovies
             onComplete()
+        } onError: { (movieError) in
+            print(movieError)
+        }
+    }
+    
+    func loagingMovieSelected(onComplete: @escaping (Movie) -> Void) {
+        REST.loadMovie { (movie) in
+            onComplete(movie)
         } onError: { (movieError) in
             print(movieError)
         }
