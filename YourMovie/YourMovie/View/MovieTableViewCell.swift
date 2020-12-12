@@ -15,7 +15,7 @@ class MovieTableViewCell: UITableViewCell {
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelDateMovie: UILabel!
     
-    //MARK: - Funcoes
+    //MARK: - Functions
     func prepareCell(with movie: Results) {
         labelName.text = movie.title
         labelDateMovie.text = movie.releaseDate

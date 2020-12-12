@@ -49,24 +49,21 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     func loadMovieSelected(){
+        
         viewModel.loagingMovieSelected { (movieSelected) in
-            
             guard let movieName = self.nameMovie else { return }
             guard let likesMovie = self.labelLikes else { return }
             guard let viewsMovie = self.labelViews else { return }
             
             DispatchQueue.main.async {
-                
                 movieName.text = movieSelected.title
                 likesMovie.text = String(movieSelected.voteCount)
                 viewsMovie.text = String(movieSelected.popularity)
-                
                 if let urlImage = URL(string: "https://image.tmdb.org/t/p/w300\(movieSelected.posterPath)") {
                     self.imageMovie.kf.setImage(with: urlImage)
                 } else {
                     self.imageMovie.image = nil
                 }
-                
             }
         }
     }
@@ -78,7 +75,6 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MovieTableViewCell
-        
         let movie = viewModel.cellForRowAt(indexPath: indexPath)
         cell.prepareCell(with: movie)
         
