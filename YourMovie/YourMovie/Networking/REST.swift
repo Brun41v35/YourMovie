@@ -18,7 +18,7 @@ enum MovieError {
 
 class REST {
     
-    //MARK: - Variaveis
+    //MARK: - Variables
     private static let key = "f50f471d04a15b749b92b1c3de43e22d"
     private static let movieId = "299534"
     private static let basePathMovie = "https://api.themoviedb.org/3/movie/\(movieId)?api_key=\(key)&language=en-US"
@@ -33,7 +33,7 @@ class REST {
     }()
     private static let session = URLSession(configuration: configuration)
     
-    //MARK: - Metodos
+    //MARK: - Functions
     class func loadMovie(onComplete: @escaping (Movie) -> Void, onError: @escaping (MovieError) -> Void) {
         
         guard let url = URL(string: basePathMovie) else {
@@ -44,14 +44,11 @@ class REST {
         let dataTask = session.dataTask(with: url) { (data, response, error) in
             
             if error == nil {
-                
                 guard let responseURL = response as? HTTPURLResponse else {
                     onError(.noResponse)
                     return
                 }
-                
                 if responseURL.statusCode == 200 {
-                    
                     guard let receivingData = data else { return }
                     
                     do {
@@ -61,7 +58,6 @@ class REST {
                     } catch {
                         onError(.invalidJSON)
                     }
-                    
                 } else {
                     onError(.responseStatusCode(code: responseURL.statusCode))
                 }
@@ -80,16 +76,14 @@ class REST {
         }
         
         let dataTask = session.dataTask(with: url) { (data, response, error) in
-            
+
             if error == nil {
-                
                 guard let responseURL = response as? HTTPURLResponse else {
                     onError(.noResponse)
                     return
                 }
                 
                 if responseURL.statusCode == 200 {
-                    
                     guard let receivingData = data else {
                         onError(.noData)
                         return
