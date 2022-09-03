@@ -1,26 +1,34 @@
-//
-//  ViewController.swift
-//  YourMovie
-//
-//  Created by Bruno Silva on 01/12/20.
-//
-
 import UIKit
 import Kingfisher
 
-class MovieViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
+final class MovieViewController: UIViewController {
     
-    //MARK: - Variables
-    var viewModel = ViewModel()
+    //MARK: - Private Variables
+    
+    private let viewModel: ViewModelProtocol
+    
+    //MARK: - Init
+    
+    init(viewModel: ViewModelProtocol) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     //MARK: - IBOutlets
-    @IBOutlet weak var imageMovie: UIImageView!
-    @IBOutlet weak var nameMovie: UILabel!
-    @IBOutlet weak var labelViews: UILabel!
-    @IBOutlet weak var labelLikes: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet private weak var imageMovie: UIImageView!
+    @IBOutlet private weak var nameMovie: UILabel!
+    @IBOutlet private weak var labelViews: UILabel!
+    @IBOutlet private weak var labelLikes: UILabel!
+    @IBOutlet private weak var tableView: UITableView!
     
     //MARK: - IBAction
+    
     @IBAction func actionLike(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
         if sender.isSelected {
@@ -30,18 +38,35 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
         }
     }
     
-    //MARK: - View life cycle
+    //MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        setup()
+    }
+    
+    //MARK: - setup
+    
+    private func setup() {
+        setupTableView()
+        setupLoadMovies()
+    }
+    
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+    }
+    
+    private func setupLoadMovies() {
         loadListMovies()
         loadMovieSelected()
     }
     
     //MARK: - Functions
+    
     func loadListMovies() {
-        viewModel.loadingMoviesAtList {
+        viewModel.loadingMoviesAtList { [weak self] in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
@@ -50,7 +75,8 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     func loadMovieSelected(){
         
-        viewModel.loagingMovieSelected { (movieSelected) in
+        viewModel.loagingMovieSelected { [weak self] movieSelected in
+            guard let self = self else { return }
             guard let movieName = self.nameMovie else { return }
             guard let likesMovie = self.labelLikes else { return }
             guard let viewsMovie = self.labelViews else { return }
@@ -67,8 +93,12 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
             }
         }
     }
+}
+
+// MARK: - Extension
+
+extension MovieViewController: UITableViewDataSource, UITableViewDelegate {
     
-    //MARK: - TableView Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.numberOfRowsInSection(section: section)
     }
@@ -89,4 +119,3 @@ class MovieViewController: UIViewController, UITableViewDataSource, UITableViewD
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-

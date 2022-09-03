@@ -1,21 +1,16 @@
-//
-//  MovieTableViewCell.swift
-//  YourMovie
-//
-//  Created by Bruno Silva on 05/12/20.
-//
-
 import UIKit
 import Kingfisher
 
-class MovieTableViewCell: UITableViewCell {
+final class MovieTableViewCell: UITableViewCell {
     
     //MARK: - IBOutlet
+    
     @IBOutlet weak var imageMovie: UIImageView!
     @IBOutlet weak var labelName: UILabel!
     @IBOutlet weak var labelDateMovie: UILabel!
     
     //MARK: - Functions
+    
     func prepareCell(with movie: Results) {
         labelName.text = movie.title
         labelDateMovie.text = movie.releaseDate

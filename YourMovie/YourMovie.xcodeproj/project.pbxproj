@@ -15,7 +15,6 @@
 		7E0CA2A12577274900CD079A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E0CA29F2577274900CD079A /* Main.storyboard */; };
 		7E0CA2A32577274E00CD079A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E0CA2A22577274E00CD079A /* Assets.xcassets */; };
 		7E0CA2A62577274E00CD079A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7E0CA2A42577274E00CD079A /* LaunchScreen.storyboard */; };
-		7E0CA2B12577274E00CD079A /* YourMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0CA2B02577274E00CD079A /* YourMovieTests.swift */; };
 		7E0CA2BC2577274E00CD079A /* YourMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E0CA2BB2577274E00CD079A /* YourMovieUITests.swift */; };
 		7E18868A257F183000C3A5F3 /* RESTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E188689257F183000C3A5F3 /* RESTTests.swift */; };
 		7E67BF40257BE8E800E2285C /* MovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E67BF3F257BE8E800E2285C /* MovieTableViewCell.swift */; };
@@ -55,7 +54,6 @@
 		7E0CA2A52577274E00CD079A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7E0CA2A72577274E00CD079A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E0CA2AC2577274E00CD079A /* YourMovieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourMovieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7E0CA2B02577274E00CD079A /* YourMovieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourMovieTests.swift; sourceTree = "<group>"; };
 		7E0CA2B22577274E00CD079A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7E0CA2B72577274E00CD079A /* YourMovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourMovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E0CA2BB2577274E00CD079A /* YourMovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourMovieUITests.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 		7E0CA2AF2577274E00CD079A /* YourMovieTests */ = {
 			isa = PBXGroup;
 			children = (
-				7E0CA2B02577274E00CD079A /* YourMovieTests.swift */,
 				7E188689257F183000C3A5F3 /* RESTTests.swift */,
 				7E0CA2B22577274E00CD079A /* Info.plist */,
 			);
@@ -475,7 +472,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7E0CA2B12577274E00CD079A /* YourMovieTests.swift in Sources */,
 				7E18868A257F183000C3A5F3 /* RESTTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

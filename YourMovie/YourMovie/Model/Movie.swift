@@ -1,11 +1,4 @@
-//
-//  Movie.swift
-//  YourMovie
-//
-//  Created by Bruno Silva on 02/12/20.
-//
-
-import Foundation
+import UIKit
 
 struct Movie: Codable {
     let homepage: String

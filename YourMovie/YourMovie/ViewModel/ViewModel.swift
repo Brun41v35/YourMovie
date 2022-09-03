@@ -1,23 +1,28 @@
-//
-//  ViewModel.swift
-//  YourMovie
-//
-//  Created by Bruno Silva on 11/12/20.
-//
+import UIKit
 
-import Foundation
+protocol ViewModelProtocol {
+    func loadingMoviesAtList(onComplete: @escaping () -> Void)
+    func loagingMovieSelected(onComplete: @escaping (Movie) -> Void)
+    func numberOfRowsInSection(section: Int) -> Int
+    func cellForRowAt (indexPath: IndexPath) -> Results
+}
 
-class ViewModel {
+final class ViewModel {
     
     //MARK: - Variables
+    
     private var popularMovies = [Results]()
     private var nameMovie: String?
+}
+
+// MARK: - Extension
+
+extension ViewModel: ViewModelProtocol {
     
-    //MARK: - Functions
     func loadingMoviesAtList(onComplete: @escaping () -> Void) {
-        REST.loadSimilarMovie { (listMovies) in
-            var listSimilarMovies = listMovies.results
-            self.popularMovies = listSimilarMovies
+        REST.loadSimilarMovie { [weak self] listMovies in
+            guard let self = self else { return }
+            self.popularMovies = listMovies.results
             onComplete()
         } onError: { (movieError) in
             print(movieError)

@@ -1,19 +1,20 @@
-//
-//  RESTTests.swift
-//  YourMovieTests
-//
-//  Created by Bruno Silva on 07/12/20.
-//
-
 import XCTest
 @testable import YourMovie
 
-class RESTTests: XCTestCase {
+final class RESTTests: XCTestCase {
     
-    override func setUpWithError() throws {
-    }
+    // MARK: - Private Properties
     
-    override func tearDownWithError() throws {
+    private var sut = ViewModel()
+    
+    // MARK: - Methods
+    
+    func test_callSomething_shouldReturnSomething() {
+        // Given
+        
+        // When
+        
+        // Then
     }
     
     func testValidatingAPIReturn() {
